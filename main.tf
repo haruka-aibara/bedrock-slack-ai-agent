@@ -32,3 +32,8 @@ module "sns_topic" {
   source = "./modules/sns"
   name   = "${local.app_name}-sns-topic"
 }
+
+resource "aws_bedrockagent_agent_alias" "bedrock_agent" {
+  agent_alias_name = local.app_name
+  agent_id         = module.bedrock_agent.agent_id
+}
