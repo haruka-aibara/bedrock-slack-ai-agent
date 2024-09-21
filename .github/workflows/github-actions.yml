@@ -1,21 +1,24 @@
-name: Terraform Format Check
-run-name: Terraform Format Check 🚀
+name: Terraform fmt checker
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+on: [push]
 
 jobs:
-  terraform-fmt-check:
+  terraform-fmt-checker:
+    name: Terraform fmt checker
     runs-on: ubuntu-latest
-    
+
+    defaults:
+      run:
+        shell: bash
+
     steps:
-    - uses: hashicorp/setup-terraform@v3
-      # with:
-        # cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
-    - name: Terraform fmt
-        id: fmt
-        run: terraform fmt -check -recursive
-        continue-on-error: true
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 1.0.11
+
+      - name: Terraform Format
+        run: terraform fmt -recursive -check
