@@ -1,0 +1,21 @@
+name: Terraform Format Check
+run-name: Terraform Format Check 🚀
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  terraform-fmt-check:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: hashicorp/setup-terraform@v3
+      # with:
+        # cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+    - name: Terraform fmt
+        id: fmt
+        run: terraform fmt -check
+        continue-on-error: true
