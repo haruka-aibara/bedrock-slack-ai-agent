@@ -48,4 +48,5 @@ resource "aws_bedrockagent_agent" "example" {
   agent_resource_role_arn     = aws_iam_role.example.arn
   idle_session_ttl_in_seconds = 500
   foundation_model            = "anthropic.claude-v2"
+  instruction                 = "質問内容に簡潔に答えてください。"
 }
