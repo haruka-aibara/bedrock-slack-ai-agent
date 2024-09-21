@@ -22,6 +22,8 @@ Amazon Bedrockを利用したSlack AIエージェント
 しかし、エージェントのメモリー機能を有効化・活用するための処理が入っていないため、
 １問１答（連続した会話ができない）状態です。
 
-以下を参考に、メモリー機能を追加していく予定です。
+以下のあたりの記事を参考に、メモリー機能を追加していく予定です。
 
 https://aws.amazon.com/jp/blogs/news/agents-for-amazon-bedrock-now-support-memory-retention-and-code-interpretation-preview/
+
+https://docs.aws.amazon.com/bedrock/latest/userguide/agents-configure-memory.html
