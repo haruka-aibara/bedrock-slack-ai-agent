@@ -4,10 +4,14 @@ data "aws_partition" "current" {}
 
 data "aws_region" "current" {}
 
-resource "aws_bedrockagent_agent" "example" {
-  agent_name                  = var.agent_name
-  foundation_model            = var.bedrock_foundation_model_id
-  instruction                 = var.agent_instruction
-  agent_resource_role_arn     = aws_iam_role.example.arn
-  idle_session_ttl_in_seconds = 500
+module "bedrock_agent" {
+  source = "./modules/bedrockagent"
+
+  agent_name       = local.bedrockagent_agent_name
+  foundation_model = local.bedrockagent_foundation_model
+
+  description                 = local.bedrockagent_description
+  idle_session_ttl_in_seconds = local.bedrockagent_idle_session_ttl_in_seconds
+  instruction                 = local.bedrockagent_instruction
+  prepare_agent               = local.bedrockagent_prepare_agent
 }
