@@ -27,3 +27,9 @@ Amazon Bedrockを利用したSlack AIエージェント
 https://aws.amazon.com/jp/blogs/news/agents-for-amazon-bedrock-now-support-memory-retention-and-code-interpretation-preview/
 
 https://docs.aws.amazon.com/bedrock/latest/userguide/agents-configure-memory.html
+
+## エージェントのエイリアス更新時などに、既存のコネクターを削除する手順
+以下のコマンドを入力する。
+```
+@aws connector delete [Name]
+ ```
