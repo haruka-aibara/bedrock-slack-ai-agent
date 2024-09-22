@@ -30,4 +30,8 @@ module "chatbot_slack_channel_configuration" {
 resource "aws_bedrockagent_agent_alias" "bedrock_agent" {
   agent_alias_name = local.app_name
   agent_id         = module.bedrock_agent.agent_id
+  routing_configuration = [{
+    agent_version          = 2
+    provisioned_throughput = null
+  }]
 }
