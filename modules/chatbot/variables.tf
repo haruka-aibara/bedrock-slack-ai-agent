@@ -49,8 +49,8 @@ variable "iam_role_name_prefix" {
   default     = "ChatbotRole_"
 }
 
-variable "additional_iam_policy_arns" {
-  description = "(Optional) List of additional IAM policy ARNs to attach to the IAM role."
+variable "iam_policy_arns" {
+  description = "Chatbot IAMロールにアタッチするIAMポリシーのARNのリスト"
   type        = list(string)
   default     = []
 }

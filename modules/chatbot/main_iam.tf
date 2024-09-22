@@ -15,13 +15,8 @@ resource "aws_iam_role" "chatbot_role" {
   tags               = var.tags
 }
 
-resource "aws_iam_role_policy_attachment" "default_policy" {
+resource "aws_iam_role_policy_attachment" "policy_attachments" {
+  count      = length(var.iam_policy_arns)
   role       = aws_iam_role.chatbot_role.name
-  policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
-}
-
-resource "aws_iam_role_policy_attachment" "additional_policies" {
-  count      = length(var.additional_iam_policy_arns)
-  role       = aws_iam_role.chatbot_role.name
-  policy_arn = var.additional_iam_policy_arns[count.index]
+  policy_arn = var.iam_policy_arns[count.index]
 }
