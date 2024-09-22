@@ -25,13 +25,13 @@ module "chatbot_slack_channel_configuration" {
   configuration_name = local.app_name
   slack_team_id      = var.slack_team_id
   slack_channel_id   = var.slack_channel_id
-  sns_topic_arns     = [module.sns_topic.arn]
+  # sns_topic_arns     = [module.sns_topic.arn]
 }
 
-module "sns_topic" {
-  source = "./modules/sns"
-  name   = "${local.app_name}-sns-topic"
-}
+# module "sns_topic" {
+#   source = "./modules/sns"
+#   name   = "${local.app_name}-sns-topic"
+# }
 
 resource "aws_bedrockagent_agent_alias" "bedrock_agent" {
   agent_alias_name = local.app_name
