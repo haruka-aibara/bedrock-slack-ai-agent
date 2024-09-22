@@ -27,3 +27,9 @@ output "tags_all" {
   description = "Map of tags assigned to the resource, including those inherited from the provider default_tags configuration block."
   value       = aws_bedrockagent_agent.this.tags_all
 }
+
+## Alias
+output "agent_alias_id" {
+  description = "Unique identifier of the alias."
+  value       = aws_bedrockagent_agent_alias.bedrock_agent.agent_alias_id
+}

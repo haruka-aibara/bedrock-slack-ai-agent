@@ -25,4 +25,26 @@ module "chatbot_slack_channel_configuration" {
   configuration_name = local.app_name
   slack_team_id      = var.slack_team_id
   slack_channel_id   = var.slack_channel_id
+
+  iam_policy_arns = [
+    aws_iam_policy.bedrock_invoke_agent_policy.arn
+  ]
+}
+
+data "aws_iam_policy_document" "bedrock_invoke_agent_policy" {
+  statement {
+    effect = "Allow"
+    actions = [
+      "bedrock:InvokeAgent"
+    ]
+    resources = [
+      "arn:aws:bedrock:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:agent-alias/${module.bedrock_agent.agent_id}/${module.bedrock_agent.agent_alias_id}"
+    ]
+  }
+}
+
+resource "aws_iam_policy" "bedrock_invoke_agent_policy" {
+  name        = "${local.app_name}-bedrock-invoke-agent-policy"
+  description = "Allows bedrock:InvokeAgent on specific agent alias"
+  policy      = data.aws_iam_policy_document.bedrock_invoke_agent_policy.json
 }
