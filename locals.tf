@@ -3,7 +3,7 @@ locals {
 
   # bedrockagent module required arguments
   bedrockagent_agent_name       = local.app_name
-  bedrockagent_foundation_model = "anthropic.claude-3-haiku-20240307-v1:0"
+  bedrockagent_foundation_model = "anthropic.claude-3-5-sonnet-20240620-v1:0"
 
   # bedrockagent module optional arguments 
   bedrockagent_description                 = "Slack を介して対話できる AI エージェント"
