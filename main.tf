@@ -29,6 +29,9 @@ module "chatbot_slack_channel_configuration" {
   iam_policy_arns = [
     aws_iam_policy.bedrock_invoke_agent_policy.arn
   ]
+  guardrail_policy_arns = [
+    aws_iam_policy.bedrock_invoke_agent_policy.arn
+  ]
 }
 
 data "aws_iam_policy_document" "bedrock_invoke_agent_policy" {
