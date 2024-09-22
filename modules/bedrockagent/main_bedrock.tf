@@ -43,3 +43,14 @@ resource "aws_bedrockagent_agent" "this" {
     }
   }
 }
+
+resource "aws_bedrockagent_agent_alias" "bedrock_agent" {
+  agent_alias_name = var.agent_name
+  agent_id         = aws_bedrockagent_agent.this.agent_id
+
+  lifecycle {
+    replace_triggered_by = [
+      aws_bedrockagent_agent.this.agent_version
+    ]
+  }
+}

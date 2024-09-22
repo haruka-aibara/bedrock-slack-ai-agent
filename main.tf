@@ -26,11 +26,3 @@ module "chatbot_slack_channel_configuration" {
   slack_team_id      = var.slack_team_id
   slack_channel_id   = var.slack_channel_id
 }
-
-resource "aws_bedrockagent_agent_alias" "bedrock_agent" {
-  agent_alias_name = local.app_name
-  agent_id         = module.bedrock_agent.agent_id
-  lifecycle {
-    create_before_destroy = true
-  }
-}
