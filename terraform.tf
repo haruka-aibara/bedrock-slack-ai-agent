@@ -6,4 +6,10 @@ terraform {
       name = "bedrock-slack-ai-agent"
     }
   }
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "= 5.95.0"
+    }
+  }
 }

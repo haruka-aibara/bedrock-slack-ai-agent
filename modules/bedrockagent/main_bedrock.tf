@@ -16,7 +16,14 @@ resource "aws_bedrockagent_agent" "this" {
   prepare_agent               = var.prepare_agent
   skip_resource_in_use_check  = var.skip_resource_in_use_check
   tags                        = var.tags
-  memory_configuration        = var.memory_configuration
+
+  dynamic "memory_configuration" {
+    for_each = var.memory_configuration != null ? [var.memory_configuration] : []
+    content {
+      enabled_memory_types = memory_configuration.value["enabled_memory_types"]
+      storage_days         = lookup(memory_configuration.value, "storage_days", null)
+    }
+  }
 
   dynamic "prompt_override_configuration" {
     for_each = var.prompt_override_configuration != null ? [var.prompt_override_configuration] : []
