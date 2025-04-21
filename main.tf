@@ -17,6 +17,7 @@ module "bedrock_agent" {
   iam_role_name_prefix        = local.bedrockagent_iam_role_name_prefix
   iam_policy_actions          = ["bedrock:InvokeModel"]
   iam_policy_resources        = ["arn:${data.aws_partition.current.partition}:bedrock:${data.aws_region.current.name}::foundation-model/${local.bedrockagent_foundation_model}"]
+  memory_configuration        = local.bedrockagent_memory_configuration
 }
 
 module "chatbot_slack_channel_configuration" {

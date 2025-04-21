@@ -16,6 +16,7 @@ resource "aws_bedrockagent_agent" "this" {
   prepare_agent               = var.prepare_agent
   skip_resource_in_use_check  = var.skip_resource_in_use_check
   tags                        = var.tags
+  memory_configuration        = var.memory_configuration
 
   dynamic "prompt_override_configuration" {
     for_each = var.prompt_override_configuration != null ? [var.prompt_override_configuration] : []

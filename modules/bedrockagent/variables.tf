@@ -73,3 +73,10 @@ variable "iam_policy_resources" {
   type        = list(string)
   default     = []
 }
+
+variable "memory_configuration" {
+  description = "(Optional) Configurations for the agent's ability to retain the conversational context."
+  type        = bool
+  default     = false
+}
+
