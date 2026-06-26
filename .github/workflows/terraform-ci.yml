@@ -1,0 +1,13 @@
+# Managed by Terraform (haruka-aibara/haruka-aibara). Do not edit directly.
+name: Terraform CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  ci:
+    uses: haruka-aibara/github-actions/.github/workflows/terraform-ci.yml@main
+    with:
+      working-directory: "."
